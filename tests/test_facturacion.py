@@ -70,3 +70,12 @@ def test_contrato_lsp_descuento_dentro_de_rango(politica):
     for categoria in ("normal", "vip", "mayorista", "desconocida"):
         descuento = politica.calcular(Cliente(9, "X", "x@x.co", categoria), subtotal)
         assert Decimal("0") <= descuento <= subtotal
+
+
+def test_descuento_por_volumen_solo_sobre_umbral(lineas):
+    from facturacion.descuentos import DescuentoPorVolumen
+
+    politica = DescuentoPorVolumen(Decimal("200000"), Decimal("5"))
+    cliente = Cliente(5, "Teo", "teo@x.co")
+    assert politica.calcular(cliente, Decimal("250000")) == Decimal("12500.00")
+    assert politica.calcular(cliente, Decimal("100000")) == Decimal("0")
