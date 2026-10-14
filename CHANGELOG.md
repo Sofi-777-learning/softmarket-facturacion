@@ -1,6 +1,10 @@
 # Changelog
 Formato basado en [Keep a Changelog](https://keepachangelog.com) y [SemVer](https://semver.org).
 
+## [1.0.1]
+### Corregido
+- IVA redondeado a 2 decimales (hotfix SM-31).
+
 ## [1.0.0]
 ### Agregado
 - Módulo de facturación refactorizado aplicando SOLID (Strategy, Repository, DI).

@@ -1,6 +1,8 @@
 """Políticas de impuestos (patrón Strategy)."""
 from abc import ABC, abstractmethod
-from decimal import Decimal
+from decimal import ROUND_HALF_UP, Decimal
+
+CENTAVOS = Decimal("0.01")
 
 
 class PoliticaImpuesto(ABC):
@@ -15,7 +17,7 @@ class ImpuestoPorcentaje(PoliticaImpuesto):
         self._tasa = tasa
 
     def calcular(self, base: Decimal) -> Decimal:
-        return base * self._tasa
+        return (base * self._tasa).quantize(CENTAVOS, rounding=ROUND_HALF_UP)
 
 
 class Exento(PoliticaImpuesto):

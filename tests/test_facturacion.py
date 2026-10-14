@@ -79,3 +79,8 @@ def test_descuento_por_volumen_solo_sobre_umbral(lineas):
     cliente = Cliente(5, "Teo", "teo@x.co")
     assert politica.calcular(cliente, Decimal("250000")) == Decimal("12500.00")
     assert politica.calcular(cliente, Decimal("100000")) == Decimal("0")
+
+
+def test_iva_se_redondea_a_dos_decimales():
+    # Regresión del incidente en producción: 33.33 x 0.19 = 6.3327
+    assert IVA_COLOMBIA.calcular(Decimal("33.33")) == Decimal("6.33")
