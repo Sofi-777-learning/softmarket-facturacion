@@ -32,3 +32,16 @@ class DescuentoPorCategoria(PoliticaDescuento):
     def calcular(self, cliente: Cliente, subtotal: Decimal) -> Decimal:
         pct = self._porcentajes.get(cliente.categoria, Decimal("0"))
         return _porcentaje(subtotal, pct)
+
+
+class DescuentoPorVolumen(PoliticaDescuento):
+    """Aplica un porcentaje cuando el subtotal alcanza un umbral."""
+
+    def __init__(self, umbral: Decimal, porcentaje: Decimal) -> None:
+        self._umbral = umbral
+        self._pct = porcentaje
+
+    def calcular(self, cliente: Cliente, subtotal: Decimal) -> Decimal:
+        if subtotal >= self._umbral:
+            return _porcentaje(subtotal, self._pct)
+        return Decimal("0")
