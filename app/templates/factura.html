@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Factura {{ factura.id }} · SoftMarket</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+  <main>
+    <h1>Factura n.º {{ factura.id }}</h1>
+    <p><strong>{{ factura.cliente.nombre }}</strong> · {{ factura.cliente.email }}
+       · categoría {{ factura.cliente.categoria }}</p>
+    <div class="tabla">
+      <table>
+        <tr><th>Descripción</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th></tr>
+        {% for l in factura.lineas %}
+        <tr><td>{{ l.descripcion }}</td><td>{{ l.precio_unitario }}</td>
+            <td>{{ l.cantidad }}</td><td>{{ l.subtotal }}</td></tr>
+        {% endfor %}
+      </table>
+    </div>
+    <dl>
+      <dt>Subtotal</dt><dd>{{ factura.subtotal }}</dd>
+      <dt>Descuento</dt><dd>{{ factura.descuento }}</dd>
+      <dt>IVA (19 %)</dt><dd>{{ factura.impuesto }}</dd>
+      <dt>Total</dt><dd class="total">{{ factura.total }}</dd>
+    </dl>
+    <p><a href="{{ url_for('inicio') }}">Emitir otra factura</a></p>
+  </main>
+</body>
+</html>

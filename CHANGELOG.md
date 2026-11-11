@@ -4,6 +4,9 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com) y [SemVer](http
 ## [Sin publicar]
 ### Agregado
 - Documentación del flujo de contribución validada por el equipo (SM-40).
+- Aplicación web de facturación desplegable en Cloud Run (SM-42).
+- Adaptadores de Google Cloud: RepositorioFirestore y NotificadorPubSub (SM-42).
+- Clave de acceso leída desde Secret Manager, sin credenciales en el código (SM-42).
 
 ## [1.0.1]
 ### Corregido

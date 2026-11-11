@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SoftMarket · Facturación</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+  <main>
+    <h1>SoftMarket · Emitir factura</h1>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    <form method="post" action="{{ url_for('emitir') }}">
+      <fieldset>
+        <legend>Cliente</legend>
+        <label>Nombre <input name="nombre" required></label>
+        <label>Correo <input name="email" type="email" required></label>
+        <label>Categoría
+          <select name="categoria">
+            {% for c in categorias %}<option value="{{ c }}">{{ c }}</option>{% endfor %}
+          </select>
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>Productos</legend>
+        {% for i in range(1, 4) %}
+        <div class="fila">
+          <input name="descripcion{{ i }}" placeholder="Descripción {{ i }}">
+          <input name="precio{{ i }}" placeholder="Precio" inputmode="decimal">
+          <input name="cantidad{{ i }}" placeholder="Cantidad" inputmode="numeric">
+        </div>
+        {% endfor %}
+      </fieldset>
+      <label>Clave de acceso <input name="clave" type="password" required></label>
+      <button type="submit">Emitir factura</button>
+    </form>
+  </main>
+</body>
+</html>
