@@ -1,4 +1,5 @@
 """Caso de uso: emitir una factura. Depende solo de abstracciones (DIP)."""
+
 from typing import Sequence
 
 from .descuentos import PoliticaDescuento

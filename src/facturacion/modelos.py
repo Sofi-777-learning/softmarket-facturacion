@@ -1,4 +1,5 @@
 """Modelos de dominio: solo datos y cálculos propios de cada entidad (SRP)."""
+
 from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import List, Optional

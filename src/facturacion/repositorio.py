@@ -1,4 +1,5 @@
 """Puertos de persistencia segregados (ISP) y una implementación en memoria."""
+
 from abc import ABC, abstractmethod
 from typing import Dict, Optional
 

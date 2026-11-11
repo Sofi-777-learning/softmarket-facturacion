@@ -1,4 +1,5 @@
 """Políticas de descuento (Strategy). Nueva regla = nueva clase (OCP)."""
+
 from abc import ABC, abstractmethod
 from decimal import ROUND_HALF_UP, Decimal
 from typing import Mapping
