@@ -31,9 +31,16 @@ def lineas() -> List[LineaFactura]:
     ]
 
 
-def crear_servicio(descuento=SinDescuento(), impuesto=IVA_COLOMBIA):
+SIN_DESCUENTO = SinDescuento()
+
+
+def crear_servicio(descuento=SIN_DESCUENTO, impuesto=IVA_COLOMBIA):
     repo, notificador = RepositorioEnMemoria(), NotificadorFalso()
-    return ServicioFacturacion(repo, impuesto, descuento, notificador), repo, notificador
+    return (
+        ServicioFacturacion(repo, impuesto, descuento, notificador),
+        repo,
+        notificador,
+    )
 
 
 def test_cliente_normal_paga_iva_sin_descuento(lineas):

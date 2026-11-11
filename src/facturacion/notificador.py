@@ -1,4 +1,5 @@
 """Puerto de notificación (DIP): el servicio no conoce SMTP ni SMS."""
+
 from abc import ABC, abstractmethod
 
 
